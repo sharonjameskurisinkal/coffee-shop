@@ -1,63 +1,47 @@
-<!-- <div class="body-container"> -->
-<!-- <p>product-list works!</p>
-<div *ngFor="let product of products | async">
-    {{ product.blend_name }}
-  </div> -->
-<!-- </div> -->
-
+<!-- Product List Page -->
 <div class="body-container d-flex justify-content-center">
   <div class="title-align">Coffee List</div>
   <div class="mat-elevation-z8 table-align">
-  <table mat-table [dataSource]="dataSource" >
-    <ng-container matColumnDef="rowIndex">
-      <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-      <td mat-cell *matCellDef="let element;index as i;"> {{ i + 1 }} </td>
-    </ng-container>
+    <table mat-table [dataSource]="dataSource">
+      <!-- Sr No Column -->
+      <ng-container matColumnDef="rowIndex">
+        <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+        <td mat-cell *matCellDef="let element;index as i;"> {{ i + 1 }} </td>
+      </ng-container>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="blendName">
-      <th mat-header-cell *matHeaderCellDef> Blend name </th>
-      <td mat-cell *matCellDef="let element"> {{element.blend_name}} </td>
-    </ng-container>
-    <ng-container matColumnDef="intensifier">
-      <th mat-header-cell *matHeaderCellDef> Intensifier </th>
-      <td mat-cell *matCellDef="let element"> {{element.intensifier}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="origin">
-      <th mat-header-cell *matHeaderCellDef> Origin </th>
-      <td mat-cell *matCellDef="let element"> {{element.origin}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="variety">
-      <th mat-header-cell *matHeaderCellDef> Variety </th>
-      <td mat-cell *matCellDef="let element"> {{element.variety}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="notes">
-      <th mat-header-cell *matHeaderCellDef> Notes </th>
-      <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-        mat-row
-       
-        *matRowDef="let row; columns: displayedColumns;"
-        (click)="viewDetailPage(row)"
-    ></tr>
-  
-    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
-  </table>
-  <mat-paginator [pageSizeOptions]="[10]"
-  showFirstLastButtons 
-  aria-label="Select page of periodic elements">
-</mat-paginator>
-</div>
+      <!-- Blend name Column -->
+      <ng-container matColumnDef="blendName">
+        <th mat-header-cell *matHeaderCellDef> Blend name </th>
+        <td mat-cell *matCellDef="let element"> {{element.blend_name}} </td>
+      </ng-container>
+
+      <!-- Intensifier Column -->
+      <ng-container matColumnDef="intensifier">
+        <th mat-header-cell *matHeaderCellDef> Intensifier </th>
+        <td mat-cell *matCellDef="let element"> {{element.intensifier}} </td>
+      </ng-container>
+
+      <!-- Origin Column -->
+      <ng-container matColumnDef="origin">
+        <th mat-header-cell *matHeaderCellDef> Origin </th>
+        <td mat-cell *matCellDef="let element"> {{element.origin}} </td>
+      </ng-container>
+
+      <!-- Variety Column -->
+      <ng-container matColumnDef="variety">
+        <th mat-header-cell *matHeaderCellDef> Variety </th>
+        <td mat-cell *matCellDef="let element"> {{element.variety}} </td>
+      </ng-container>
+
+      <!-- Notes Column -->
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewDetailPage(row)"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons aria-label="Select page of coffee">
+    </mat-paginator>
+  </div>
 </div>

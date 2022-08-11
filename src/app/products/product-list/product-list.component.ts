@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
 
   constructor(private store: Store, private productService: ProductService, private router: Router) { }
-  // const ELEMENT_DATA: Product[] = this.products;
   products = this.store.pipe(select(selectProducts));
   displayedColumns: string[] = ['rowIndex', 'blendName', 'intensifier', 'origin', 'variety', 'notes'];
   dataSource = new MatTableDataSource<Product>;
@@ -24,34 +22,27 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.store.dispatch(invokeProductsAPI());
-    console.log(this.products);
-
   }
 
   ngAfterViewInit() {
-    let ELEMENT_DATA;
+    let elementData;
     this.products.subscribe(data => {
-      console.log(data);
-      ELEMENT_DATA = data;
-
-      this.dataSource = new MatTableDataSource<Product>(ELEMENT_DATA);
+      elementData = data;
+      this.dataSource = new MatTableDataSource<Product>(elementData);
       this.dataSource.paginator = this.paginator;
     })
 
-    console.log(ELEMENT_DATA);
-
-    console.log(this.dataSource);
-
   }
 
+//Method to navigate to detail page
   viewDetailPage(row: any) {
-    console.log(row);
     this.productService.selectedCoffeeObj = row;
     this.router.navigate(['coffee']);
-
-
-
   }
+
+  ngOnDestroy(): void {
+  }
+
 
 }
 
