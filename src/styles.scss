@@ -1,0 +1,138 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$coffee-shop-primary: mat.define-palette(mat.$indigo-palette);
+$coffee-shop-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$coffee-shop-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$coffee-shop-theme: mat.define-light-theme((color: (primary: $coffee-shop-primary,
+        accent: $coffee-shop-accent,
+        warn: $coffee-shop-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($coffee-shop-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+.body-container {
+  margin-top: 6%;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.table-align {
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+.title-align{
+  margin-left: 10%;
+  color: #231814 ;
+  padding-bottom: 1%;
+  font-size: x-large;
+  font-weight: bolder;
+}
+.toolbar-title{
+  color: wheat;
+  text-decoration: none;
+}
+
+.footer-section {
+  background-color: #231814;
+  color: wheat;
+  text-align: center;
+  margin-top: 2%;
+  padding: 2%;
+
+
+}
+
+.footer-address {
+
+  list-style-type: none;
+}
+
+
+.detail-card {
+  max-width: 400px;
+  border: 1px solid #231814 ;
+}
+
+.detail-header-image {
+  background-image: url('assets/images/coffee-profile.jpg');
+  background-size: cover;
+}
+
+
+
+@media (max-width: 1180px) {
+  .table-align {
+    margin-left: 10%;
+
+  }
+}
+
+@media (max-width: 820px) {
+  .table-align {
+    margin-left: 5%;
+    margin-right: 5%;
+
+  }
+.title-align{
+  margin-left: 5%;
+  padding-bottom: 3%;
+}
+
+.body-container {
+  margin-top: 10%;
+}
+}
+
+@media (max-width: 720px) {
+  .body-container {
+    margin-top: 15%;
+  }
+}
+
+@media (max-width: 420px) {
+  .table-align {
+    margin-left: 2%;
+    margin-right: 2%;
+
+  }
+  .title-align{
+    margin-left: 2%;
+    padding-bottom: 3%;
+    font-size:large;
+  }
+
+  .body-container {
+    margin-top: 20%;
+  }
+}
